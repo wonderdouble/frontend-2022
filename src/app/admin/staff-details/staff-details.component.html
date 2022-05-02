@@ -1,0 +1,144 @@
+<div class="container-fluid" style="background:#fff; position:fixed; top:0; z-index: 20000;">
+    <app-header></app-header>
+</div>
+<div class="container-fluid" style="padding-top:100px;">
+
+    <div class="row">
+        <div class="desktop-sidebar mobile-hide" style="background:#353d65; margin-right:0;">
+            <div class="desktop-sidebardd">
+                <app-sidebar></app-sidebar>
+            </div>
+        </div>
+        <div class="desktop-content" style="min-height:100vh; background:#f3f3f3;">
+            
+            
+            <div class="container-fluid dashboard-main-content" style="margin-top:40px;">
+                <div class="row">
+                    <div class="col-md-8"> 
+                        <div style="box-sizing: border-box;">
+                            <h5><strong>Staff Details</strong></h5>
+                        </div>
+                    </div>
+                    <div class="col-md-4 float-right">
+                        <!-- <button mdbBtn type="button" size="sm" (click)="addStaff()" style="float:right;">+New Blog</button>
+                        <div style="clear:both;"></div> -->
+                    </div>
+                </div>
+
+                <div *ngIf="isLoaded; else placeholder_personal" style="margin-bottom:40px;">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="contentpanel" style="width:100%;">
+                                <div style="padding-top:30px; padding-bottom:30px; ">
+                                    
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <h4>Personal Information</h4>
+                                            <div style="padding:5px;">
+                                                <label><strong>Fullname <span class="required"></span></strong></label>
+                                                <br><p>{{subList.lastname}} {{subList.othernames}}</p>
+                                            </div>
+                            
+                                            <div style="padding:5px;">
+                                                <label><strong>Gender <span class="required"></span></strong></label>
+                                                <br><p>{{subList.gender}}</p>
+                                            </div>
+                            
+                                            <div style="padding:5px;">
+                                                <label><strong>Birthdate <span class="required"></span></strong></label>
+                                                <br><p>{{subList.birthday}} - {{subList.birthmonth}}</p>
+
+                                            </div>
+                                            <div style="padding:5px;">
+                                                <label><strong>Matital Status<span class="required"></span></strong></label>
+                                                <br><p>{{subList.marital_status}}</p>
+
+                                            </div>
+                            
+                                            <div style="padding:5px;">
+                                                <label><strong>Email <span class="required"></span></strong></label>
+                                                <br><p>{{subList.email}}</p>
+                                            </div>
+                            
+                                            <div style="padding:5px;">
+                                                <label><strong>Phone <span class="required"></span></strong></label>
+                                                <br><p>{{subList.phone}}</p>
+                                            </div>
+                            
+                                            <div style="padding:5px;">
+                                                <label><strong>Home Address<span class="required"></span></strong></label>
+                                                <br><p>{{subList.address}}</p>
+                                            </div>
+    
+                                            
+    
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h4>Office Information</h4>
+                                            <div style="padding:5px;">
+                                                <label><strong>Department <span class="required"></span></strong></label>
+                                                <br><p>{{subList.department}}</p>
+                                            </div>
+                            
+                                            <div style="padding:5px;">
+                                                <label><strong>Bank <span class="required"></span></strong></label>
+                                                <br><p>{{subList.bank}}</p>
+                                            </div>
+                                            
+                                            <div style="padding:5px;">
+                                                <label><strong>Bank Account <span class="required"></span></strong></label>
+                                                <br><p>{{subList.bank_account}}</p>
+                                            </div>
+                            
+                                            
+    
+                                            <div style="margin:20px 0;">
+                                                <h4>Next of Kin Information</h4>
+                                            </div>
+    
+                                            <div style="padding:5px;">
+                                                <label><strong>Name <span class="required"></span></strong></label>
+                                                <br><p>{{subList.kin_name}}</p>
+                                            </div>
+                                            
+                                            <div style="padding:5px;">
+                                                <label><strong>Phone <span class="required"></span></strong></label>
+                                                <br><p>{{subList.kin_phone}}</p>
+                                            </div>
+
+                                            <div style="padding:5px;">
+                                                <label><strong>Address <span class="required"></span></strong></label>
+                                                <br><p>{{subList.kin_address}}</p>
+                                            </div>
+                            
+                                            <div style="padding:5px;">
+                                                <label><strong>Picture <span class="required"></span></strong></label>
+                                                <br><p>{{subList.upload}}</p>
+                                            </div>
+    
+                                           
+    
+                                            
+
+
+                                        </div>
+                                    </div>
+                                   
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <ng-template #placeholder_personal>
+                    <div class="item" style="margin-bottom:40px;">
+                        <ngx-skeleton-loader count="10"></ngx-skeleton-loader>
+                    </div>
+                </ng-template>
+
+
+            </div>
+
+        </div>
+    </div>
+     
+</div>

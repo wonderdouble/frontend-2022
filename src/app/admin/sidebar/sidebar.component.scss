@@ -1,0 +1,29 @@
+ul {
+    list-style:none;
+    padding:20px;
+    margin:0;
+    font-size: 13px;
+}
+
+a:link {
+color: #ddd;
+text-decoration: none;
+}
+
+/* visited link */
+a:visited {
+    color: #ddd;
+    text-decoration: none;
+}
+
+/* mouse over link */
+a:hover {
+    color: #fff;
+    text-decoration: none;
+}
+
+/* selected link */
+a:active {
+    color: #ddd;
+    text-decoration: none;
+}

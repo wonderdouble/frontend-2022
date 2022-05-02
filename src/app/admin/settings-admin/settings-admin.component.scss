@@ -1,0 +1,43 @@
+
+@media (max-width: 575px) {
+    
+    .desktop-content {margin-left:5px; width:100%; background:#f3f3f3;}
+  
+  }
+  @media (min-width: 576px) and (max-width: 767px) {
+    .desktop-content {margin-left:5x; width:100%; background:#f3f3f3;}
+    
+  }
+  
+  @media (min-width: 768px) and (max-width: 991px){
+    .desktop-content {margin-left:10px; width:100%; background:#f3f3f3;}
+  }
+  
+  @media (min-width: 992px) and (max-width: 1199px) {
+    .desktop-content {margin-left:250px; width:100%; box-sizing: border-box; background:#f3f3f3;}
+    .contentpanel {padding:20px;}
+  }
+  
+  @media (min-width: 1200px) {
+    .desktop-content {margin-left:250px; width:100%; box-sizing: border-box; background:#f3f3f3;}
+    .contentpanel {padding:20px;}
+  }
+  
+  .desktop-sidebar{
+    background: #ffffff;
+    width: 250px;
+    position:fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    border-right: 1px solid #162636;
+    height: 100%;
+  }
+  
+  .mainpart {background:#f3f3f3; width:100%;}
+  .bottompart {background:red; height:60px; width:100%;}
+  .mainpart-pad {padding:10px;}
+  .title {color: #dfdddd; font-size: 12px;}
+  .num {color: white; font-size: 25px;}
+  .target {color: white; font-size: 12px;}
+  .card1 {background: #345ea6;}

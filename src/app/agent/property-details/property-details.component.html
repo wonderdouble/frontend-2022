@@ -1,0 +1,79 @@
+<app-navbar></app-navbar>
+<div class="container" style="padding:20px; margin-top:0px;">
+
+    <a routerLink="/properties">Properties</a> |  <a routerLink="/profile">Profile</a><br><br>
+
+    <p>Carefully read the details of the property and the deal - you can contact us for more clarification. 
+        Copy the share link and download the banners. </p>
+</div>
+
+<div class="container">
+
+    <div *ngIf="isLoaded; else placeholder_property">
+    
+        <div class="container-fluid" style=" margin:0; padding:0; margin-top:0px; ">
+            <div class="container">
+                <div class="title-div" style="margin-bottom:30px;">
+                    <h2 style="color:#222;">Details</h2>
+                </div>
+                <h4 style="color:#111;">{{propList.estate}}</h4> 
+                <img class="d-block" src="{{propList.upload}}" class="testimg"><br><br>
+
+                <p [innerHtml]= "propList.caption"> </p>
+                
+                <div class="title-div" style="margin-bottom:30px;">
+                    <h2 style="color:#222;">Deal</h2>
+                </div>
+
+                <p><span style="font-weight:700;">Commission(%): </span><br>2%</p>
+                <p><span style="font-weight:700;">Share Link: </span><br>https://wonderdoubleglobal.com/property/{{propList.id}}/{{propList.estate}}/{{username}}</p>
+                <p><span style="font-weight:700;">Additional Information: </span><br>
+                    </p>
+
+
+                <div class="title-div" style="margin-bottom:30px;">
+                    <h2 style="color:#222;">Associated Banners</h2>
+                </div>
+
+                <div *ngIf="isBanner; else placeholder_banner">
+                    
+                    <div class="row">
+                        <div *ngFor="let list of uploadList" class="col-md-6" style="margin-bottom:50px;">
+                          <a href="{{list.upload}}" target="_blank"><img class="d-block" src="{{list.upload}}" class="testimg"></a><br><br>
+                          <p>{{list.topic}}</p><br>
+                        </div>
+                    </div>
+
+                </div>
+                <ng-template #placeholder_banner>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="item">
+                                <ngx-skeleton-loader count="5"></ngx-skeleton-loader>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="item">
+                                <ngx-skeleton-loader count="5"></ngx-skeleton-loader>
+                            </div>
+                        </div>
+                    </div>
+                </ng-template>
+
+            </div>
+        </div>
+        
+    
+    </div>
+    <ng-template #placeholder_property>
+        <div class="item" style="margin-bottom:300px;">
+            <ngx-skeleton-loader count="5"></ngx-skeleton-loader>
+        </div>
+    </ng-template>
+
+</div>
+
+
+
+
+<app-footer></app-footer>

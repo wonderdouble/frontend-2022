@@ -1,0 +1,165 @@
+<div class="container-fluid" style="background:#fff; position:fixed; top:0; z-index: 20000;">
+    <app-header></app-header>
+</div>
+<div class="container-fluid" style="padding-top:100px;">
+    
+   
+    <div class="row">
+        <div class="desktop-sidebar mobile-hide" style="background:#353d65; margin-right:0;">
+            <div class="desktop-sidebardd">
+                <app-sidebar></app-sidebar>
+            </div>
+        </div>
+        <div class="desktop-content" style="min-height:100vh; background:#f3f3f3;">
+            
+            
+            <div class="container-fluid dashboard-main-content" style="margin-top:40px;">
+
+                <div mdbModal #frame="mdbModal" class="modal fade left" id="frameModalTop" tabindex="-1" role="dialog"
+                    aria-labelledby="myModalLabel" aria-hidden="true" style="margin-top:80px;">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header text-center">
+                                <h4 class="modal-title w-100 font-weight-bold">Confirmation</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="frame.hide()">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>    
+                            <div class="modal-body mx-3">
+                                
+                                <div style="padding:50px 30px;">
+                                    <p>Are you sure you want to delete this property?</p>
+                                </div>
+                                
+                            </div>
+                            <div class="modal-footer d-flex justify-content-center">
+                                <button type="submit" class="btn btn-lg btn-block subtn" style="padding:12px; background:#d9ab2f; color:#fff;" (click)="deleteUpload()">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-md-8"> 
+                        <div style="box-sizing: border-box;">
+                            <h5><strong>Update Property</strong></h5>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <button type="button" mdbBtn rounded="true" style="background:#d9ab2f; color:#fff; float:right;" data-toggle="modal" data-target="#basicExample"
+  (click)="frame.show()" mdbWavesEffect>Delete Property</button>
+                        <div style="clear:both;"></div>
+                    </div>
+                </div>
+                
+                <div *ngIf="isLoaded; else placeholder_set">
+                    <div style="margin-top:20px; max-width:600px; margin:auto;">
+                        <div style="padding:30px;">
+                            <div style="margin-bottom:30px;">
+                                <form #form2="ngForm" autocomplete="off" (submit)="onSubmitUpload(form2)" style="margin-top:1.5rem;">
+                                    <div class="form-group">
+                                        <label for="exampleFormControlFile1">Upload Banners (As many as...)</label>
+                                        <input type="file" class="form-control-file" id="exampleFormControlFile1" (change)="uploadImage($event)">
+                                    </div>
+                                    <div class="progress" [hidden]="!uploadPercent">
+                                        <div class="progress-bar" role="progressbar" [style.width]="(uploadPercent | async) + '%'"  aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">{{ uploadPercent | async }}%</div>
+                                    </div>
+                                    <div class="form-group">
+                                        <input name="topic" #topic="ngModel" [(ngModel)] = "uploadService.formData.topic" class="form-control" placeholder="Topic" required>
+                                        <div *ngIf="topic.invalid && topic.touched" class="validation-error">This field is required.</div>
+                                    </div>
+                    
+                                    <div class="form-group">
+                                        <textarea name="ucaption" #ucaption="ngModel" [(ngModel)] = "uploadService.formData.caption" class="form-control" placeholder="Short Caption" required></textarea>
+                                        <div *ngIf="ucaption.invalid && ucaption.touched" class="validation-error">This field is required.</div>
+                                    </div>
+                                    <div class="form-group" style="margin-top:30px;">
+                                        <button type="submit" [disabled]="(uploadPercent | async) !== 100" class="btn btn-lg btn-block subtn" style="padding:12px; background:#d9ab2f; color:#fff;">UPLOAD</button>
+                                    </div>
+                                </form>
+                            </div>
+
+
+                            <div style="margin-bottom:30px;">
+                                <table mdbTable striped="true">
+                                    <thead>
+                                        <th style="width:200px;"></th>
+                                        <th>Topic</th>
+                                        <th style="width:40px;"></th>
+                                    </thead>
+                                    <tbody>
+                                        <tr mdbTableCol *ngFor= "let list of uploadList">
+                                            <td style="width:200px;">
+                                            </td>
+                                            <td>{{list.topic}}</td>
+                                            <td style="width:40px; vertical-align:middle; text-align:center; cursor:pointer;">
+                                                <i class="far fa-trash-alt" (click)="deleteUpload()"></i>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table> 
+                            </div>
+                           
+                            
+                            <form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)" style="margin-top:50px;">
+                                <input type="hidden" name="id" #id="ngModel" [(ngModel)] = "propertyService.formData.id">
+                                
+                                <div class="form-group">
+                                    <input name="estate" #estate="ngModel" [(ngModel)] = "propertyService.formData.estate" class="form-control" placeholder="Estate Name" required>
+                                    <div *ngIf="estate.invalid && estate.touched" class="validation-error">This field is required.</div>
+                                </div>
+                
+                                <div class="form-group">
+                                    <textarea name="caption" #caption="ngModel" [(ngModel)] = "propertyService.formData.caption" class="form-control" placeholder="Short Description" required></textarea>
+                                    <div *ngIf="caption.invalid && caption.touched" class="validation-error">This field is required.</div>
+                                </div>
+
+                                <div class="form-group">
+                                    <input name="location" #location="ngModel" [(ngModel)] = "propertyService.formData.location" class="form-control" placeholder="Location" required>
+                                    <div *ngIf="location.invalid && location.touched" class="validation-error">This field is required.</div>
+                                </div>
+                
+                                <div class="form-group">
+                                    <textarea name="documentation" #documentation="ngModel" [(ngModel)] = "propertyService.formData.documentation" class="form-control" placeholder="Documentation" required></textarea>
+                                    <div *ngIf="documentation.invalid && documentation.touched" class="validation-error">This field is required.</div>
+                                </div>
+
+                                <div class="form-group">
+                                    <textarea name="features" #features="ngModel" [(ngModel)] = "propertyService.formData.features" class="form-control" placeholder="Features" required></textarea>
+                                    <div *ngIf="features.invalid && features.touched" class="validation-error">This field is required.</div>
+                                </div>
+
+                                <div class="form-group">
+                                    <input name="video" #video="ngModel" [(ngModel)] = "propertyService.formData.video" class="form-control" placeholder="Video Channel" required>
+                                    <div *ngIf="video.invalid && video.touched" class="validation-error">This field is required.</div>
+                                </div>
+
+                                <div class="form-group">
+                                    <input name="price" #price="ngModel" [(ngModel)] = "propertyService.formData.price" class="form-control" placeholder="price" required>
+                                    <div *ngIf="price.invalid && price.touched" class="validation-error">This field is required.</div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <button type="submit" [disabled]="form.invalid" class="btn btn-lg btn-block subtn" style="padding:12px; background:#d9ab2f; color:#fff;">SUBMIT</button>
+                                   
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <ng-template #placeholder_set>
+                    <div class="item" style="margin-top:40px;">
+                        <ngx-skeleton-loader count="5"></ngx-skeleton-loader>
+                    </div>
+                </ng-template>
+
+
+
+
+            </div>
+
+        </div>
+    </div>
+     
+</div>

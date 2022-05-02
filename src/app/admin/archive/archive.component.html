@@ -1,0 +1,101 @@
+<div class="container-fluid" style="background:#fff; position:fixed; top:0; z-index: 20000;">
+    <app-header></app-header>
+</div>
+<div class="container-fluid" style="padding-top:100px;">
+
+    <div class="row">
+        <div class="desktop-sidebar mobile-hide" style="background:#353d65; margin-right:0;">
+            <div class="desktop-sidebardd">
+                <app-sidebar></app-sidebar>
+            </div>
+        </div>
+        <div class="desktop-content" style="min-height:100vh; background:#f3f3f3;">
+            
+            
+            <div class="container-fluid dashboard-main-content" style="margin-top:40px;">
+                <div class="row">
+                    <div class="col-md-8"> 
+                        <div style="box-sizing: border-box;">
+                            <h5><strong>Archive</strong></h5>
+                        </div>
+                    </div>
+                    <div class="col-md-4 float-right">
+                        <button mdbBtn type="button" size="sm" (click)="addArchive()" style="float:right;">+New Archive</button>
+                        <div style="clear:both;"></div>
+                    </div>
+                </div>
+                
+                <!-- <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <button mdbBtn type="button" size="sm" [class]="btnClassAll" (click)="getPage('All')">All</button>
+                                <button mdbBtn type="button" size="sm" [class]="btnClassUnverified" (click)="getPage('Unverified')">Unverified</button>
+                                <button mdbBtn type="button" size="sm" [class]="btnClassVerified" (click)="getPage('Verified')">Verified</button>
+                                <button mdbBtn type="button" size="sm" [class]="btnClassReceived" (click)="getPage('Received')">Received</button>
+                                <button mdbBtn type="button" size="sm" [class]="btnClassCompleted" (click)="getPage('Completed')">Completed</button>
+
+                            </div>
+                            <div class="col-md-4 float-right">
+                                <form class="form-inline md-form mr-auto" style="padding:0; margin:0;">
+                                    <input class="form-control mr-sm-2" type="text" name="search" [(ngModel)]="searchInput"  placeholder="Email | Phone" aria-label="Search" style="font-size:12px; width:200px;">
+                                    <button mdbBtn size="sm" color="elegant" rounded="true" class="my-0 waves-light" mdbWavesEffect (click)="getByInput()">Search</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+
+                <div *ngIf="isLoaded; else placeholder_blog">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="contentpanel" style="width:100%;">
+                                <div style="padding-top:30px; padding-bottom:30px; ">
+                                    
+                                    <table mdbTable striped="true">
+                                        <thead>
+                                            <th style="width:150px;">Date</th>
+                                            <th style="width:200px;">Category</th>
+                                            <th>Title</th>
+                                            <th style="width:300px;">Link</th>
+                                            <th style="width:40px;"></th>
+                                        </thead>
+                                        <tbody>
+                                            <tr mdbTableCol *ngFor= "let list of pageOfItems">
+                                                <td style="width:150px;">{{list.date | date: 'dd-MM-yyyy'}}
+                                                </td>
+                                                <td>{{list.category}}</td>
+                                                <td>{{list.title}}
+                                                </td>
+                                                <td *ngIf="list.category == 'Public'" style="width:300px;">{{list.upload}}</td>
+                                                <td *ngIf="list.category == 'Confidential' && (department !== 'Admin' || department !== 'Management')" style="width:300px;">Unauthorized</td>
+                                                <td *ngIf="list.category == 'Confidential' && (department == 'Admin' || department == 'Management')" style="width:300px;">{{list.upload}}</td>
+                                                <td style="width:40px; vertical-align:middle; text-align:center; cursor:pointer;">
+                                                    <img src="/assets/arrow-right.png" width="20" (click)="editArchive(list.id)"/>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table> 
+                                    <div class="card-footer pb-0 pt-3" style="background:none;">
+                                        <jw-pagination [items]="subList" [pageSize]= "25" (changePage)="onChangePage($event)"></jw-pagination>
+                                    </div>
+                                
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <ng-template #placeholder_blog>
+                    <div class="item" style="margin-top:40px;">
+                        <ngx-skeleton-loader count="5"></ngx-skeleton-loader>
+                    </div>
+                </ng-template>
+
+
+            </div>
+
+        </div>
+    </div>
+     
+</div>

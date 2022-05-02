@@ -1,0 +1,50 @@
+<nav class="navbar navbar-light navbar-expand-lg shadow-5" style="border-bottom: 1px solid rgba(0, 0, 0, 0.125);">
+    <div class="container-fluid" style="margin:auto;">      
+        <a class="navbar-brand main-navbar-brand" routerLink="/admin/dashboard" routerLinkActive="active" style="cursor:pointer;"><img src="/assets/logo.png" width="150px"/></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span> 
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav"> 
+
+
+
+        <ul class="navbar-nav mr-auto desktop-hide" style="background:#292b2f;color:white; ">          
+           
+            <li class="dropdown nav-item" data-toggle="collapse" data-target=".navbar-collapse.show" [routerLinkActive]="['active']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+              <a class="nav-link" routerLink="/admin/dashboard">Dashboard</a>
+            </li>          
+            <li class="dropdown nav-item" data-toggle="collapse" data-target=".navbar-collapse.show" [routerLinkActive]="['active']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+              <a class="nav-link" routerLink="/admin/clients">Clients</a>
+            </li> 
+            <li class="dropdown nav-item" data-toggle="collapse" data-target=".navbar-collapse.show" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+              <a class="nav-link" routerLink="/admin/deals">Deals</a>
+            </li> 
+          <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show" [routerLinkActive]="['active']" data-target=".navbar-collapse.show" [routerLinkActive]="['active']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+            <a class="nav-link" routerLink="/admin/transactions">Transactions</a>
+          </li>
+          <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show" [routerLinkActive]="['active']" data-target=".navbar-collapse.show" [routerLinkActive]="['active']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+            <a class="nav-link" routerLink="/admin/subscribers">Subscribers</a>
+          </li>
+          <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show" [routerLinkActive]="['active']" data-target=".navbar-collapse.show" [routerLinkActive]="['active']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+            <a class="nav-link" routerLink="/admin/staff">Settings</a>
+          </li>
+          <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show" [routerLinkActive]="['active']" data-target=".navbar-collapse.show" [routerLinkActive]="['active']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+            <a class="nav-link" >Logout</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">  
+          <li class="dropdown nav-item mobile-hide" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+            <a routerLink="/admin/settings"><img src="/assets/isettings.png" style="width:20px; margin-right:5px; margin-top:10px;"/></a>
+          </li>
+
+          <li *ngIf="department == 'ICT'" class="dropdown nav-item mobile-hide" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+            <a routerLink="/admin/settings/admin"><button mdbBtn size="sm" type="button" class="btn btn-outline-dark">+New Staff</button></a>
+          </li>
+
+          <li class="dropdown nav-item mobile-hide" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+            <button type="button" mdbBtn size="sm" class="btn btn-outline-dark" (click)="authService.signOut()">Logout</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+</nav>

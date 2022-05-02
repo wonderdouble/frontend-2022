@@ -1,0 +1,108 @@
+<div class="container-fluid" style="background:#fff; position:fixed; top:0; z-index: 20000;">
+    <app-header></app-header>
+</div>
+<div class="container-fluid" style="padding-top:100px;">
+    
+    <div class="row">
+        <div class="desktop-sidebar mobile-hide" style="background:#353d65; margin-right:0;">
+            <div class="desktop-sidebardd">
+                <app-sidebar></app-sidebar>
+            </div>
+        </div>
+        <div class="desktop-content" style="min-height:100vh; background:#f3f3f3;">
+            
+            
+            <div class="container-fluid dashboard-main-content" style="margin-top:30px;">
+                <div>
+                    <p>Transactions / {{id}}</p>
+                </div>
+                <div class="row" style="margin-top:30px;">
+                    <div class="col-md-8"> 
+                        <div style="box-sizing: border-box;">
+                            <h3><strong>Transaction Details</strong></h3>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        
+                    </div>
+                </div>
+
+                <div *ngIf="isLoading; else placeholder_personal">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="contentpanel" style="width:100%;">
+                                <div style="padding-top:30px; padding-bottom:30px; ">
+                                    
+                                    <div>
+                                        <div style="padding:5px;">
+                                            <p><strong>Customer ID <span class="required"></span></strong><br>
+                                            {{subList.customer_id}}</p>
+                                        </div>
+                        
+                                        <div style="padding:5px;">
+                                            <p><strong>Payment ID <span class="required"></span></strong><br>
+                                            {{subList.payment_id}}</p>
+                                        </div>
+                        
+                                        <div style="padding:5px;">
+                                            <p><strong>Amount <span class="required"></span></strong><br>
+                                            {{subList.amount | currency:'&#8358;'}}</p>
+                                        </div>
+                        
+                                        <div style="padding:5px;">
+                                            <p><strong>Pay For </strong><br>
+                                            {{subList.paid_month}} / {{subList.paid_year}} </p>
+                                        </div>
+                        
+                                        <div style="padding:5px;">
+                                            <p><strong>Bank <span class="required"></span></strong><br>
+                                            {{subList.bank}}</p>
+                                        </div>
+                        
+                                        <div style="padding:5px;">
+                                            <p><strong>Account <span class="required"></span></strong><br>
+                                            {{subList.account_name}}<br>{{subList.account_id}}</p>
+                                        </div>
+
+                                        <div style="padding:5px;">
+                                            <p><strong>Account Type<span class="required"></span></strong><br>
+                                            {{subList.account_type}}</p>
+                                        </div>
+
+                                        <div style="padding:5px;">
+                                            <p><strong>Status<span class="required"></span></strong><br>
+                                            {{subList.status}}</p>
+                                        </div>
+
+                                        <div style="padding:5px;">
+                                            <p><strong>Date<span class="required"></span></strong><br>
+                                            {{subList.date | date: 'dd/MM/yyyy hh:mm a'}}</p>
+                                        </div>
+
+
+                                    </div>
+                                   
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <ng-template #placeholder_personal>
+                    <div class="item">
+                        <ngx-skeleton-loader count="10"></ngx-skeleton-loader>
+                    </div>
+                </ng-template>
+
+
+                <div style="margin:40px 0; text-align: right;">
+                    <button mdbBtn type="button" color="danger" autocomplete="off" mdbWavesEffect (click)="decline()">Decline</button> 
+                    <button mdbBtn type="button" color="primary" autocomplete="off" mdbWavesEffect (click)="accept()">Accept</button>
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+     
+</div>

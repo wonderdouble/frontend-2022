@@ -1,0 +1,79 @@
+<div class="container-fluid" style="background:#fff; position:fixed; top:0; z-index: 20000;">
+    <app-header></app-header>
+</div>
+<div class="container-fluid" style="padding-top:100px;">
+    
+    <div class="row">
+        <div class="desktop-sidebar mobile-hide" style="background:#353d65; margin-right:0;">
+            <div class="desktop-sidebardd">
+                <app-sidebar></app-sidebar>
+            </div>
+        </div>
+        <div class="desktop-content" style="min-height:100vh; background:#f3f3f3;">
+            
+            
+            <div class="container-fluid dashboard-main-content" style="margin-top:40px;">
+                <div class="row">
+                    <div class="col-md-8"> 
+                        <div style="box-sizing: border-box;">
+                            <h5><strong>Property</strong></h5>
+                        </div>
+                    </div>
+                    <div class="col-md-4 float-right">
+                        <button mdbBtn type="button" size="sm" (click)="addProperty()" style="float:right;">+New Property</button>
+                        <div style="clear:both;"></div>
+                    </div>
+                </div>
+
+                <div *ngIf="isLoaded; else placeholder_property">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="contentpanel" style="width:100%;">
+                                <div style="padding-top:30px; padding-bottom:30px; ">
+                                    
+                                    <table mdbTable striped="true">
+                                        <thead>
+                                            <th style="width:100px;">Category</th>
+                                            <th>Estate</th>
+                                            <th style="width:320px;">Location</th>
+                                            <th style="width:100px;">Price</th>
+                                            <th style="width:80px;">Status</th>
+                                            <th style="width:40px;"></th>
+                                        </thead>
+                                        <tbody>
+                                            <tr mdbTableCol *ngFor= "let list of pageOfItems">
+                                                <td style="width:150px;">{{list.category}}
+                                                </td>
+                                                <td>{{list.estate}}</td>
+                                                <td style="width:320px;">{{list.location}}</td>
+                                                <td style="width:100px;">{{list.price}}</td>
+                                                <td style="width:80px;">{{list.status}}</td>
+                                                <td style="width:40px; vertical-align:middle; text-align:center; cursor:pointer;">
+                                                    <img src="/assets/arrow-right.png" width="20" (click)="fetchProperty(list.id)"/>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table> 
+                                    <div class="card-footer pb-0 pt-3" style="background:none;">
+                                        <jw-pagination [items]="houseList" [pageSize]= "25" (changePage)="onChangePage($event)"></jw-pagination>
+                                    </div>
+                                
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <ng-template #placeholder_property>
+                    <div class="item" style="margin-top:40px;">
+                        <ngx-skeleton-loader count="5"></ngx-skeleton-loader>
+                    </div>
+                </ng-template>
+
+
+            </div>
+
+        </div>
+    </div>
+     
+</div>

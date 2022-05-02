@@ -1,0 +1,47 @@
+<app-navbar></app-navbar>
+<div class="container" style="padding:20px; margin-top:0px;">
+
+    <a routerLink="/properties">Properties</a> |  <a routerLink="/profile">Profile</a><br><br>
+
+    <p>This is the record of visitors to the website via your link. </p>
+</div>
+
+<div class="container">
+
+    <div *ngIf="isLoaded; else placeholder_traffic">
+        
+        <div class="title-div" style="margin-bottom:20px;">
+            <h2 style="color:#222;">Traffic</h2>
+        </div>
+
+        <div style="padding-top:0px; padding-bottom:0px; ">
+                        
+            <table mdbTable striped="true">
+                <thead>
+                    <th>Date</th>
+                    <th style="width:150px;">Traffic</th>
+                </thead>
+                <tbody>
+                    <tr mdbTableCol *ngFor= "let list of trafficList">
+                        <td>{{list.date}}
+                        </td>
+                        <td style="width:30%;">{{list.traffic}}</td>
+                    </tr>
+                </tbody>
+            </table> 
+        
+        </div>
+        
+    </div>
+    <ng-template #placeholder_traffic>
+        <div class="item" style="margin-bottom:300px;">
+            <ngx-skeleton-loader count="5"></ngx-skeleton-loader>
+        </div>
+    </ng-template>
+
+</div>
+
+<app-footer></app-footer>
+
+
+

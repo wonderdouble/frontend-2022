@@ -1,0 +1,66 @@
+<div class="container">
+  <div style="border-bottom:1px solid #353d65; padding:10px; width: 100%;">
+    <div style="float: right;">
+      <span routerLink="/about" mdbWavesEffect style="color:#474f75; cursor:pointer; padding-right:30px;">About us</span>
+      <span routerLink="/contact" mdbWavesEffect style="color:#474f75; cursor:pointer; padding-right:20px;">Contact us</span>
+    </div>
+    <div style="clear: both;"></div>
+  </div>
+</div>
+
+<div class="container-fluid" style="margin:0; padding:0; background:#fff;">
+  <div class="container">
+    <mdb-navbar SideClass="navbar navbar-expand-lg z-depth-0 navbar-light" [containerInside]="false">
+  
+      <!-- Navbar brand -->
+      <mdb-navbar-brand><a class="navbar-brand" [routerLink] = "['/index']" routerLinkActive="active" style="cursor:pointer;"><img src="/assets/logo.png" class="logo"/></a></mdb-navbar-brand>
+    
+      <!-- Collapsible content -->
+      <links>
+    
+        <!-- Links -->
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item" style="padding-top:20px;">
+            <p class="nav-link waves-light" routerLink="/index" mdbWavesEffect style="color:#474f75; cursor:pointer;">Home</p>
+          </li>
+         
+          <li class="nav-item" style="padding-top:20px;">
+            <p class="nav-link waves-light" routerLink="/properties" mdbWavesEffect style="color:#474f75; cursor:pointer;">Properties</p>
+          </li>
+
+          <li class="nav-item" style="padding-top:20px;">
+            <p class="nav-link waves-light" routerLink="/blog" mdbWavesEffect style="color:#474f75; cursor:pointer;">Blog</p>
+          </li>
+          
+          <li class="nav-item" style="padding-top:20px;" >
+            <p class="nav-link waves-light" routerLink="/wonder-representative-page" mdbWavesEffect style="color:#474f75; cursor:pointer;">Wonder Rep. Project</p>
+          </li>
+          
+          <li class="nav-item" style="padding-top:15px;">
+            <div *ngIf="isLogin; else placeholder_button">
+              <button type="button" mdbBtn class="btn btn-sm" routerLink="/agent" style="background:#f58634; color:white; cursor:pointer;">My Portal</button>
+            </div>
+            <ng-template #placeholder_button>
+              <button type="button" mdbBtn class="btn btn-sm" routerLink="/loginpage" style="background:#f58634; color:white; cursor:pointer;">Login</button>
+            </ng-template>
+          </li>
+
+    
+        </ul>
+        <!-- Links -->
+    
+       
+      </links>
+      <!-- Collapsible content -->
+    
+    </mdb-navbar>
+    <!--/.Navbar-->
+  </div>
+</div>
+
+
+
+
+
+
+

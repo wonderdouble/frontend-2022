@@ -1,0 +1,100 @@
+<div class="container-fluid" style="background:#fff; position:fixed; top:0; z-index: 20000;">
+    <app-header></app-header>
+</div>
+<div class="container-fluid" style="padding-top:100px;">
+    
+    <div mdbModal #frame="mdbModal" class="modal fade left" id="frameModalTop" tabindex="-1" role="dialog"
+    aria-labelledby="myModalLabel" aria-hidden="true" style="margin-top:80px;">
+       <div class="modal-dialog" role="document">
+           <div class="modal-content">
+               <div class="modal-header text-center">
+                   <h4 class="modal-title w-100 font-weight-bold">Confirmation</h4>
+                   <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="frame.hide()">
+                   <span aria-hidden="true">&times;</span>
+                   </button>
+               </div>    
+               <div class="modal-body mx-3">
+                   
+                   <div style="padding:50px 30px;">
+                       <p>Are you sure you want to delete this record?</p>
+                   </div>
+                   
+               </div>
+               <div class="modal-footer d-flex justify-content-center">
+                   <button type="submit" class="btn btn-lg btn-block subtn" style="padding:12px; background:#d9ab2f; color:#fff;" (click)="deleteArchive()">Delete</button>
+                  
+               </div>
+           </div>
+       </div>
+   </div>
+
+    <div class="row">
+        <div class="desktop-sidebar mobile-hide" style="background:#353d65; margin-right:0;">
+            <div class="desktop-sidebardd">
+                <app-sidebar></app-sidebar>
+            </div>
+        </div>
+        <div class="desktop-content" style="min-height:100vh; background:#f3f3f3;">
+            
+            
+            <div class="container-fluid dashboard-main-content" style="margin-top:40px;">
+                <div class="row">
+                    <div class="col-md-8"> 
+                        <div style="box-sizing: border-box;">
+                            <h5><strong>Update Blog</strong></h5>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <button type="button" mdbBtn style="background:#d9ab2f; color:#fff; float:right;" rounded="true" data-toggle="modal" data-target="#basicExample"
+  (click)="frame.show()" mdbWavesEffect>Delete Post</button>
+                        <div style="clear:both;"></div>
+                    </div>
+                </div>
+                
+                <div *ngIf="isLoaded; else placeholder_set">
+                    <div style="margin-top:20px; max-width:600px; margin:auto;">
+                        <div style="padding:30px;">
+                    
+                            <!--<div class="form-group">
+                                <label>Current Password</label>
+                            <input type="password" name="cpassword" #cpassword class="form-control"  required>
+                            <div *ngIf="cpassword.invalid && cpassword.touched" class="validation-error">This field is required.</div>
+                            </div>
+                            <hr>--> 
+                            
+                            <form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)" style="margin-top:1.5rem;">
+                                <input type="hidden" name="id" #id="ngModel" [(ngModel)] = "archiveService.formData.id">
+                                
+                                <div class="form-group">
+                                    <input name="title" #title="ngModel" [(ngModel)] = "archiveService.formData.title" class="form-control" placeholder="Title" required>
+                                    <div *ngIf="title.invalid && title.touched" class="validation-error">This field is required.</div>
+                                </div>
+    
+                                <div class="form-group">
+                                    <textarea name="caption" #caption="ngModel" [(ngModel)] = "archiveService.formData.caption" class="form-control" placeholder="Short description" required></textarea>
+                                    <div *ngIf="caption.invalid && caption.touched" class="validation-error">This field is required.</div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <button type="submit" [disabled]="form.invalid" class="btn btn-lg btn-block subtn" style="padding:12px; background:#d9ab2f; color:#fff;">UPDATE</button>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <ng-template #placeholder_set>
+                    <div class="item" style="margin-top:40px;">
+                        <ngx-skeleton-loader count="5"></ngx-skeleton-loader>
+                    </div>
+                </ng-template>
+
+
+
+
+            </div>
+
+        </div>
+    </div>
+     
+</div>

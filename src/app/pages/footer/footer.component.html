@@ -1,0 +1,89 @@
+<!-- <div class="container" style="background:#f0eff0; margin-top:40px;">
+    <div class="row" style="padding:70px 10px;">
+        <div class="col-md-5 mobile-hide">
+            <h2>FOLLOW US</h2>
+            <div style="padding-top:20px">
+                <i class="fab fa-facebook-f" style="color:#acabab; font-size:20px; padding-right:20px;"></i> <i class="fab fa-twitter" style="color:#acabab; font-size:20px; padding-right:20px;"></i>
+            <i class="fab fa-instagram" style="color:#acabab; font-size:20px; padding-right:20px;"></i> <i class="fab fa-youtube" style="color:#acabab; font-size:20px; padding-right:20px;"></i> 
+            </div>
+        </div>
+        <div class="col-md-7">
+            <h2>SUBSCRIBE FOR NEWSLETTER</h2>
+            <form class="form-inline md-form form-sm">
+                <input name="email" #email class="form-control form-control-sm mr-3 w-75" type="text" placeholder="Email" aria-label="Search"
+                  mdbInput>
+                  <button type="button" mdbBtn class="btn btn-sm" style="background:#345ea6; color:white; cursor:pointer;" (click)="newsSubmit(email.value)">Submit</button>
+            </form>
+        </div>
+    </div>
+</div> -->
+
+<div class="container-fluid" style="background:#2f2e2e; color:#fff; margin-top:0px;">
+    <div class="container" style="padding:20px;">
+        <div class="row" style="margin-top:30px;">
+
+            <div class="col-md-4 col-sm-6 col-sx-6">
+                <div class="mobile-hide" style="line-height:30px; margin-bottom:30px;">
+                    <h5>ADDRESS</h5>
+                    <p style="padding-top:5px; line-height:20px; color:#ccc;">
+                        13A Ayo Babatunde Crescent, <br> 
+                        Off Akiogun Road, Oniru Lekki Phase 1<br>
+                        Lagos State<br><br>
+
+                        info@wonderdoubleglobal.com<br>
+                        +234 905 612 9950, +234 902 787 0714
+                    </p>
+                    
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 col-sx-6" >
+                <div class="mobile-hide" style="line-height:30px; margin-bottom:30px;">
+                    <h5>PAGES</h5>
+                    <p style="padding-top:5px;">
+                        <a routerLink="/index">Home</a><br>
+                        <a routerLink="/properties">Properties</a><br>
+                        <a routerLink="/blog">Blog</a><br>
+                        <a routerLink="/wonder-rep-page">Wonder Rep. Project</a><br>
+                        <a routerLink="/about">About us</a><br>
+                        <a routerLink="/contact">Contact</a><br>
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-5 col-sm-6 col-sx-6" >
+                <div style="line-height:30px; margin-bottom:30px;">
+                    <h5>SUBSCRIBE TO OUR NEWSLETTER</h5>
+                    <br>
+                    <p style="line-height:20px; color:white;">We give latest and quality information
+                    on real estate related topics. Subscribe now and get latest update on opportunities in real estate</p>
+                </div>
+                <div style="margin-top:20px;">
+                    <div class="input-group mb-3">
+                        <input type="text" name="femail" #femail class="form-control" placeholder="Your Email" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                        <div class="input-group-append" (click)="newsSubmit(femail.value)" style="cursor:pointer;">
+                          <span class="input-group-text" id="basic-addon2"><i class="fas fa-paper-plane"></i></span>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div style="margin-top:20px;">
+                    <div class="text-center">
+                        <button type="button" routerLink="/contact" mdbBtn style="background-color:#f58634; color:white;" rounded="true" data-toggle="modal" mdbWavesEffect>Contact Us</button>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </div>
+    <div class="container" style="margin-top:20px; border-top:1px solid #bbb;">
+        <div class="row">
+            <div class="col-md-6">
+                <div style="padding:20px;">
+                    <p><a routerLink="/privacy-policy">Privacy Policy</a></p>
+                </div>
+            </div>
+            <div class="col-md-6" style="text-align: right">
+                <div style="padding:20px;">
+                    @copy 2021 All Rights Reserved
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

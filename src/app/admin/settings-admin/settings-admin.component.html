@@ -1,0 +1,85 @@
+<div class="container-fluid" style="background:#fff; position:fixed; top:0; z-index: 20000;">
+    <app-header></app-header>
+</div>
+<div class="container-fluid" style="padding-top:100px;">
+    
+    <div class="row">
+        <div class="desktop-sidebar mobile-hide" style="background:#353d65; margin-right:0;">
+            <div class="desktop-sidebardd">
+                <app-sidebar></app-sidebar>
+            </div>
+        </div>
+        <div class="desktop-content" style="min-height:100vh; background:#f3f3f3;">
+            
+            
+            <div class="container-fluid dashboard-main-content" style="margin-top:40px;">
+                <div class="row">
+                    <div class="col-md-8"> 
+                        <div style="box-sizing: border-box;">
+                            <h5><strong>+New Admin</strong></h5>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        
+                    </div>
+                </div>
+                
+                <div style="margin-top:20px; max-width:600px; margin:auto;">
+                    <div style="padding:30px;">
+                
+                        <form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)" style="margin-top:1.5rem;">
+                            <input type="hidden" name="id" #id="ngModel" [(ngModel)] = "authService.formData.id">
+                            
+                            <div class="form-group">
+                                <label><strong>Fullname <span class="required">*</span></strong></label>
+                                <input name="name" #name="ngModel" [(ngModel)] = "authService.formData.name" class="form-control" placeholder="Fullname" required>
+                                <div *ngIf="name.invalid && name.touched" class="validation-error">This field is required.</div>
+                            </div>
+            
+                            <div class="form-group">
+                                <label><strong>Email <span class="required">*</span></strong></label>
+                                <input name="email" #email="ngModel" [(ngModel)] = "authService.formData.email" class="form-control" placeholder="Email" required>
+                                <div *ngIf="email.invalid && email.touched" class="validation-error">This field is required.</div>
+                            </div>
+
+                            <div class="form-group">
+                                <label><strong>Phone <span class="required">*</span></strong></label>
+                                <input name="phone" #phone="ngModel" [(ngModel)] = "authService.formData.phone" class="form-control" placeholder="Phone" required>
+                                <div *ngIf="phone.invalid && phone.touched" class="validation-error">This field is required.</div>
+                            </div>
+            
+                            <div class="form-group">
+                                <label><strong>Department<span class="required">*</span></strong></label>
+                                <select name="department" #department="ngModel" class="browser-default custom-select" [(ngModel)] = "authService.formData.department" required>
+                                    <option selected>Select Department</option>
+                                    <option value="ICT">ICT</option>
+                                    <option value="Customer Service">Customer Service</option>
+                                    <option value="Admin">Admin</option>
+                                    <option value="Management">Management</option>
+                                </select>
+                            </div>
+
+                            <!-- <div class="form-group">
+                                <label><strong>Password <span class="required">*</span></strong></label>
+                                <input type="password" name="password" #password="ngModel" [(ngModel)] = "authService.formData.password" class="form-control" placeholder="Password" required>
+                                <div *ngIf="email.invalid && email.touched" class="validation-error">This field is required.</div>
+                            </div> -->
+                            
+                            <div class="form-group">
+                                <button type="submit" [disabled] = "form.invalid || formTracker" class="btn btn-lg btn-block subtn" style="padding:12px; background:#d9ab2f; color:#fff;">SUBMIT</button>
+                               
+                            </div>
+                        </form> 
+
+                    </div>
+                </div>
+
+
+
+
+            </div>
+
+        </div>
+    </div>
+     
+</div>

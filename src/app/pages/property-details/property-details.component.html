@@ -1,0 +1,169 @@
+<app-navbar></app-navbar>
+
+<!--<div class="container-fluid" style="background:#f0eff0; padding:0;">
+   <img src="/assets/service_panel.jpg" class="testimg"/>
+</div>-->
+
+
+<div class="container-fluid top-banner" [style.background]="'url(' + propList.upload + ')'">
+
+    <div class="container top-banner-content">
+       
+    </div>
+
+<div mdbModal #frame="mdbModal" class="modal fade left" id="frameModalTop" tabindex="-1" role="dialog"
+aria-labelledby="myModalLabel" aria-hidden="true" style="margin-top:80px;">
+  <div class="modal-dialog" role="document">
+      <div class="modal-content">
+          <div class="modal-header text-center">
+              <h4 class="modal-title w-100 font-weight-bold">Request Form</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="frame.hide()">
+              <span aria-hidden="true">&times;</span>
+              </button>
+          </div>    
+          <div class="modal-body mx-3">
+              
+           <div class="form-group" style="margin-top:20px;">
+               <input type="text" name="name" #name class="form-control" placeholder="Name" required>
+               <div *ngIf="name.invalid && name.touched" class="validation-error">This field is required.</div>
+           </div>
+           
+           <div class="form-group">
+               <input type="text" name="phone" #phone class="form-control" placeholder="Phone no" required>
+               <div *ngIf="phone.invalid && phone.touched" class="validation-error">This field is required.</div>
+           </div>
+
+           <div class="form-group">
+             <input type="text" name="email" #email class="form-control" placeholder="Email" required>
+             <div *ngIf="email.invalid && email.touched" class="validation-error">This field is required.</div>
+           </div>
+      
+          </div>
+          <div class="modal-footer d-flex justify-content-center">
+            <button type="button" mdbBtn class="btn btn-sm" style="background:#f70606; color:white; cursor:pointer; float:right;" (click)="subscriber(name.value, phone.value, email.value)">Submit</button>
+           <div style="clear:both;"></div>
+          </div>
+      </div>
+  </div>
+</div>
+  
+</div>
+
+
+<div class="container title-container">
+    <div class="title-div">
+        <h2 style="color:#222;">{{propList.estate}}</h2>
+    </div>
+    <div class="title-next" style="text-align: left;">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <p [innerHtml]= "propList.caption">
+                </p>
+            </div>
+            <div class="col-md-6">
+                <img src="{{propList.upload}}" class="testimg"/>
+            </div>
+        </div>
+        
+    </div>
+
+</div>
+
+
+<div class="container title-container">
+    <div class="title-div">
+        <h2 style="color:#222;">Details</h2>
+    </div>
+    <div class="title-next" style="text-align: left;">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="row">
+                    <div *ngFor="let feat of featArr" class="col-md-6" >
+                        <p><i class="fas fa-check"></i> {{feat}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card shadow-5-strong">
+                    <div class="card-body" style="border:0;">
+                        <table width="100%">
+                            <tr>
+                                <th><p><i class="fas fa-pencil-alt" style="padding-right:20px;"></i></p></th>
+                                <td><p>{{propList.estate}}</p></td>
+                            </tr>
+                            <tr>
+                                <th><p><i class="fas fa-thumbtack" style="padding-right:20px;"></i></p></th>
+                                <td><p>{{propList.location}}</p></td>
+                            </tr>
+                            <tr>
+                                <th><p><i class="far fa-edit" style="padding-right:20px;"></i></p></th>
+                                <td><p>{{propList.documentation}}</p></td>
+                            </tr>
+                            <tr>
+                                <th><p><i class="fas fa-wallet" style="padding-right:20px;"></i></p></th>
+                                <td><p>{{propList.price}}</p></td>
+                            </tr>
+                            <tr>
+                                <th><p><i class="fas fa-toggle-off" style="padding-right:20px;"></i></p> </th>
+                                <td><p>{{propList.status}}</p></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div style="margin-top:20px;">
+                    <button type="submit" class="btn btn-lg btn-block subtn" style="padding:12px; color:white; background:#f70606;" (click)="frame.show()">MAKE REQUEST</button>
+                
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+</div>
+
+
+<div class="container-fluid" style="background:#eee3d0; margin:0; padding:0; margin-top:0px; ">
+    <div class="container" style="padding-top:30px;">
+        <div class="title-div" style="">
+            <h2 style="color:#222;">Property Gallery</h2>
+        </div>
+        <div class="container title_div2">
+            <!-- <div class="row">
+                <div  *ngFor="let ban of uploadList" class="col-md-3">
+                    <img src="ban.upload" class="testimg">
+                </div>
+            </div> -->
+
+            <div class="lightbox">
+                <div class="row">
+                    <div class="col-md-4" *ngFor="let image of _album; let i=index">
+                        <img [src]="image.thumb" (click)="open(i)" />
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid" style=" margin:0; padding:0; margin-top:0px; ">
+    <div class="container" style="padding-top:30px;">
+        <div class="title-div" style="margin-bottom:30px;">
+            <h2 style="color:#222;">Other Properties</h2>
+        </div>
+        <div class="row">
+            <div *ngFor="let list of otherPropList" class="col-md-6" style="margin-bottom:50px;">
+              <a routerLink="/property/{{list.id}}/{{list.estate}}/{{username}}"><img class="d-block" src="{{list.upload}}" class="testimg"></a><br><br>
+              <h4 style="color:#111;">{{list.estate}}</h4>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div>
+    <app-footer></app-footer>
+</div>

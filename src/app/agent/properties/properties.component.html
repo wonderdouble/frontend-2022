@@ -1,0 +1,41 @@
+<app-navbar></app-navbar>
+<div class="container" style="padding:20px; margin-top:0px;">
+
+    <a routerLink="/properties">Properties</a> |  <a routerLink="/profile">Profile</a><br><br>
+
+    <p>Please check details of every property to copy the marketing link and read other important details about the property</p>
+</div>
+
+<div class="container">
+
+    <div *ngIf="isLoaded; else placeholder_property">
+    
+        <div class="container-fluid" style=" margin:0; padding:0; margin-top:0px; ">
+            <div class="container" style="">
+                <div class="title-div" style="margin-bottom:30px;">
+                    <h2 style="color:#222;">Properties</h2>
+                </div>
+                <div class="row">
+                    <div *ngFor="let list of propList" class="col-md-6" style="margin-bottom:50px;">
+                      <h4 style="color:#111;">{{list.estate}}</h4> 
+                      <img class="d-block" src="{{list.upload}}" class="testimg"><br><br>
+                      <a [routerLink]="['/agent/property', list.id]">Details</a> |  <a [routerLink]="['/agent/traffic', list.id]">Traffic</a>  |  <a [routerLink]="['/agent/transaction', list.id]">Transaction</a><br>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    
+    </div>
+    <ng-template #placeholder_property>
+        <div class="item" style="margin-bottom:300px;">
+            <ngx-skeleton-loader count="5"></ngx-skeleton-loader>
+        </div>
+    </ng-template>
+
+</div>
+
+
+<app-footer></app-footer>
+
+

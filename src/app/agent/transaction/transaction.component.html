@@ -1,0 +1,47 @@
+<app-navbar></app-navbar>
+<div class="container" style="padding:20px; margin-top:0px;">
+
+    <a routerLink="/properties">Properties</a> |  <a routerLink="/profile">Profile</a><br><br>
+
+    <p>This is the record of visitors to the website via your link. </p>
+</div>
+
+<div class="container">
+
+    <div *ngIf="isLoaded; else placeholder_traffic">
+
+        <div class="title-div" style="margin-bottom:20px;">
+            <h2 style="color:#222;">Transaction</h2>
+        </div>
+
+        <div *ngFor="let trans of transList">
+            <table>
+                <tr>
+                    <td>{{trans.status}}</td>
+                    <td style="text-align:right;">{{trans.date}}</td>
+                </tr>
+            </table> 
+            <h4 style="color:#111;">{{trans.property}}</h4>
+            <table>
+                <tr>
+                    <td>Deposit<br>{{trans.deposit}}</td>
+                    <td>Paid<br>{{trans.paid}}</td>
+                    <td>Balance<br>{{trans.balance}}</td>
+                </tr>
+            </table> 
+        </div>
+        
+    </div>
+    <ng-template #placeholder_traffic>
+        <div class="item" style="margin-bottom:300px;">
+            <ngx-skeleton-loader count="5"></ngx-skeleton-loader>
+        </div>
+    </ng-template>
+
+</div>
+
+
+<app-footer></app-footer>
+
+
+

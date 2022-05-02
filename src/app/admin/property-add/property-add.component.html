@@ -1,0 +1,108 @@
+<div class="container-fluid" style="background:#fff; position:fixed; top:0; z-index: 20000;">
+    <app-header></app-header>
+</div>
+<div class="container-fluid" style="padding-top:100px;">
+    
+   
+    <div class="row">
+        <div class="desktop-sidebar mobile-hide" style="background:#353d65; margin-right:0;">
+            <div class="desktop-sidebardd">
+                <app-sidebar></app-sidebar>
+            </div>
+        </div>
+        <div class="desktop-content" style="min-height:100vh; background:#f3f3f3;">
+            
+            
+            <div class="container-fluid dashboard-main-content" style="margin-top:40px;">
+                <div class="row">
+                    <div class="col-md-8"> 
+                        <div style="box-sizing: border-box;">
+                            <h5><strong>+New Property</strong></h5>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        
+                    </div>
+                </div>
+                
+                <div style="margin-top:20px; max-width:600px; margin:auto;">
+                    <div style="padding:30px;">
+                
+                        <!--<div class="form-group">
+                            <label>Current Password</label>
+                        <input type="password" name="cpassword" #cpassword class="form-control"  required>
+                        <div *ngIf="cpassword.invalid && cpassword.touched" class="validation-error">This field is required.</div>
+                        </div>
+                        <hr>--> 
+                        <div style="margin-bottom:30px;">
+                            <div class="form-group">
+                                <label for="exampleFormControlFile1">Upload Banner</label>
+                                <input type="file" class="form-control-file" id="exampleFormControlFile1" (change)="uploadImage($event)">
+                            </div>
+                            <div class="progress" [hidden]="!uploadPercent">
+                                <div class="progress-bar" role="progressbar" [style.width]="(uploadPercent | async) + '%'"  aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">{{ uploadPercent | async }}%</div>
+                            </div>
+                        </div>
+
+                        
+                        <form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)" style="margin-top:50px;">
+                            <input type="hidden" name="id" #id="ngModel" [(ngModel)] = "propertyService.formData.id">
+                            <div class="form-group">
+                                <select name="category" #category="ngModel" [(ngModel)] = "propertyService.formData.category" class="browser-default custom-select">
+                                    <option selected>Select the Category</option>
+                                    <option value="Land">Land </option>
+                                    <option value="House">House</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <input name="estate" #estate="ngModel" [(ngModel)] = "propertyService.formData.estate" class="form-control" placeholder="Estate Name" required>
+                                <div *ngIf="estate.invalid && estate.touched" class="validation-error">This field is required.</div>
+                            </div>
+            
+                            <div class="form-group">
+                                <textarea name="caption" #caption="ngModel" [(ngModel)] = "propertyService.formData.caption" class="form-control" placeholder="Short Description" required></textarea>
+                                <div *ngIf="caption.invalid && caption.touched" class="validation-error">This field is required.</div>
+                            </div>
+
+                            <div class="form-group">
+                                <input name="location" #location="ngModel" [(ngModel)] = "propertyService.formData.location" class="form-control" placeholder="Location" required>
+                                <div *ngIf="location.invalid && location.touched" class="validation-error">This field is required.</div>
+                            </div>
+            
+                            <div class="form-group">
+                                <textarea name="documentation" #documentation="ngModel" [(ngModel)] = "propertyService.formData.documentation" class="form-control" placeholder="Documentation" required></textarea>
+                                <div *ngIf="documentation.invalid && documentation.touched" class="validation-error">This field is required.</div>
+                            </div>
+
+                            <div class="form-group">
+                                <textarea name="features" #features="ngModel" [(ngModel)] = "propertyService.formData.features" class="form-control" placeholder="Features" required></textarea>
+                                <div *ngIf="features.invalid && features.touched" class="validation-error">This field is required.</div>
+                            </div>
+
+                            <div class="form-group">
+                                <input name="video" #video="ngModel" [(ngModel)] = "propertyService.formData.video" class="form-control" placeholder="Video Channel" required>
+                                <div *ngIf="video.invalid && video.touched" class="validation-error">This field is required.</div>
+                            </div>
+
+                            <div class="form-group">
+                                <input name="price" #price="ngModel" [(ngModel)] = "propertyService.formData.price" class="form-control" placeholder="price" required>
+                                <div *ngIf="price.invalid && price.touched" class="validation-error">This field is required.</div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <button type="submit" [disabled]="(uploadPercent | async) !== 100 && form.invalid" class="btn btn-lg btn-block subtn" style="padding:12px; background:#d9ab2f; color:#fff;">SUBMIT</button>
+                               
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+
+
+
+            </div>
+
+        </div>
+    </div>
+     
+</div>
